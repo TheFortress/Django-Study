@@ -9,4 +9,4 @@ class NewsView(generic.ListView):
     context_object_name = 'news_news'
 
     def get_queryset(self):
-        obj = News.objects.get(pk=1)
+        return News.objects.all()
