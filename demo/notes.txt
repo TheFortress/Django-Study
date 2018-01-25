@@ -1,0 +1,12 @@
+Need these things:
+
+HOME PAGE
+News on the left taking up most of it, Then two main tabs on the right
+recent uploaded pictures, below that will show newest blog posts.
+
+News
+Simple news post, requiring date, time, title, subject and a uploaded picture
+
+Recent Photos
+Everything that is uploaded through the news post system is then shown
+as 6 most recent photos.
