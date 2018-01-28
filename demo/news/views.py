@@ -1,12 +1,14 @@
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.shortcuts import render, redirect
-from django.views import generic
-from django.views.generic import View
-from news.models import News
+from django.http import Http404
+from django.shortcuts import render
+from .models import News
 
-class NewsView(generic.ListView):
-    template_name = 'website/index.html'
-    context_object_name = 'news_news'
+def news(request):
+    all_news = News.objects.order_by('date').reverse()[:8]
+    return render(request, 'news/index.html', {'all_news': all_news})
 
-    def get_queryset(self):
-        return News.objects.all()
+def detail(request, news_id):
+    try:
+        news = News.objects.get(pk=news_id)
+    except News.DoesNotExist:
+        raise Http404("Nope")
+    return render(request, 'news/detail.html', {'news': news})

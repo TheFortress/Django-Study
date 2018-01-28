@@ -1,25 +1,49 @@
 {% extends 'website/header.html' %}
 {% block body %}
   <div class="row">
-    <h2>Latest News</h2>
-    <div class="col-xs-9">
-      {% if website_news %}
-        {% for news in website_news %}
+    <div class="col-xs-8">
+      <h2>Latest News</h2>
+      {% if news %}
+        {% for news in news%}
           <div class="thumbnail">
-
-            <img src="{{ news.photo.url }}" class="img-responsive" style="width: 400px">
-
-            <h3>{{ news.title }}</h3>
+            <a href="/news/{{ news.id }}">
+              <img src="{{ news.photo.url }}" class="img-responsive">
+            </a>
+            <a href="/news/{{ news.id }}">
+              <h3>{{ news.title }}</h3>
+            </a>
             <h6>{{ news.date }}</h6>
-            <p>{{ news.body }}</p>
           </div>
         {% endfor %}
       {% else %}
-      <h2>No News</h2>
+        <h2>No News</h2>
       {% endif %}
     </div>
-    <div class="col-xs-3">
-
+    <div class="col-xs-4">
+      <h2>Recent Pictures</h2>
+      {% if recent_photos %}
+        {% for photo in recent_photos %}
+        <div class="col-xs-4">
+          <a href="/photo/{{ photo.id }}">
+            <img src="{{ photo.photo.url }}" class="img-responsive">
+          </a>
+        </div>
+        {% endfor %}
+      {% else %}
+        <h2>No Pictures</h2>
+      {% endif %}
+      <h2>Recent Public Photos</h2>
+      {% if recent_publicphotos %}
+        {% for photo in recent_publicphotos %}
+        <div class="col-xs-4">
+          <a href="/publicphotos/{{ photo.id }}">
+            <img src="{{ photo.photo.url }}" class="img-responsive">
+          </a>
+        </div>
+        {% endfor %}
+      {% else %}
+        <h2>No Pictures</h2>
+      {% endif %}
     </div>
   </div>
 {% endblock %}

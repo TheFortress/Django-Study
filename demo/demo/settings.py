@@ -26,13 +26,16 @@ SECRET_KEY = 'vd55%a5v#jp#&sw@p1l!h%&ulc=27z6*y6ho2_x_8&3tn*5eq^'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
+    '192.168.0.100',
 ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'publicphotos',
+    'photo',
+    'account',
     'news',
     'website.apps.WebsiteConfig',
     'django.contrib.admin',

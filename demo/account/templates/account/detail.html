@@ -1,0 +1,16 @@
+{% extends 'website/header.html' %}
+
+{% block title %}{{ account.username }}{% endblock %}
+
+{% block body %}
+
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <img src="{{ account.photo.url }}" class="img-responsive">
+    <h1>{{ account.username }}</h1>
+    {% if error_message %}
+      <p>{{ error_message }}</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

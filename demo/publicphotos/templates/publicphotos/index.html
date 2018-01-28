@@ -1,0 +1,23 @@
+{% extends 'website/header.html' %}
+{% block body %}
+<h2>Photos</h2>
+  <div class="row">
+    {% if publicphotos %}
+      {% for photo in publicphotos %}
+        <div class="col-xs-3">
+          <div class="thumbnail">
+            <a href="/publicphotos/{{ photo.id }}">
+              <img src="{{ photo.photo.url }}" class="img-responsive" style="height: 250px">
+            </a>
+            <a href="/publicphotos/{{ photo.id }}">
+              <h3>{{ photo.title }}</h3>
+              <h6>{{ photo.date }}</h6>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h2>No Photos</h2>
+    {% endif %}
+  </div>
+{% endblock %}

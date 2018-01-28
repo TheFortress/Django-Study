@@ -1,13 +1,16 @@
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
-from django.views import generic
-from django.views.generic import View
+from django.http import Http404
+from django.shortcuts import render
+from news.models import News
+from photo.models import Photo
+from publicphotos.models import PublicPhotos
 
-class IndexView(generic.ListView):
-    template_name = 'website/index.html'
-    context_object_name = 'website_news'
-
-    def get_queryset(self):
-        return News.objects.all()
+def index(request):
+    news = News.objects.order_by('date').reverse()[:1]
+    recent_photos = Photo.objects.order_by('id').reverse()[:9]
+    recent_publicphotos = PublicPhotos.objects.order_by('id').reverse()[:9]
+    context = {
+        'news': news,
+        'recent_photos': recent_photos,
+        'recent_publicphotos':recent_publicphotos,
+    }
+    return render(request, 'website/index.html', context)

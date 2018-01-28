@@ -1,0 +1,23 @@
+{% extends 'website/header.html' %}
+{% block body %}
+  <div class="row">
+    <h2>Photos</h2>
+    {% if all_photos %}
+      {% for photo in all_photos %}
+        <div class="col-xs-3">
+          <div class="thumbnail">
+            <a href="/photo/{{ photo.id }}">
+              <img src="{{ photo.photo.url }}" class="img-responsive" style="height: 250px; width: 250px">
+            </a>
+            <a href="/photo/{{ photo.id }}">
+              <h3>{{ photo.title }}</h3>
+            </a>
+            <h6>{{ photo.date }}</h6>
+          </div>
+        </div>
+    {% endfor %}
+    {% else %}
+      <h2>No News</h2>
+    {% endif %}
+  </div>
+{% endblock %}

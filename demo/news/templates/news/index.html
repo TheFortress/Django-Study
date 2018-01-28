@@ -1,0 +1,27 @@
+{% extends 'website/header.html' %}
+{% block body %}
+  <div class="row">
+    <h2>Latest News</h2>
+    {% if all_news %}
+      {% for news in all_news %}
+        <div class="col-xs-3">
+          <div class="thumbnail">
+            <a href="/news/{{ news.id }}">
+              <img src="{{ news.photo.url }}" class="img-responsive">
+            </a>
+            <a href="/news/{{ news.id }}">
+              <h3>{{ news.title }}</h3>
+            </a>
+            <h6>{{ news.date }}</h6>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <h2>No News</h2>
+      {% endif %}
+    </div>
+    <div class="col-xs-3">
+
+    </div>
+  </div>
+{% endblock %}

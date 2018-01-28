@@ -1,0 +1,19 @@
+{% extends 'website/header.html' %}
+
+{% block title %}{{ publicphotos.title }}{% endblock %}
+
+{% block body %}
+
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <img src="{{ publicphotos.photo.url }}" class="img-responsive">
+    <h1>{{ publicphotos.title }}</h1>
+    <h6>Uploaded: {{ publicphotos.date }}</h6>
+    <h6>By: {{ publicphotos.username_id }}</h6>
+    <p>{{ publicphotos.body }}</p>
+    {% if error_message %}
+      <p>{{ error_message }}</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

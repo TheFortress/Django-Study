@@ -1,0 +1,30 @@
+{% extends 'website/header.html' %}
+{% block title %}Login{% endblock %}
+{% block body %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-2">
+
+    </div>
+    <div class="col-xs-8">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <!-- FORM -->
+          <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% include 'account/form-template.html' %}
+            <div class="form-group">
+              <div class="col-xs-10 col-xs-offset-2">
+                <button type="submit" class="btn btn-success">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-2">
+
+    </div>
+  </div>
+</div>
+{% endblock %}

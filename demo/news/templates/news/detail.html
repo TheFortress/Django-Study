@@ -1,0 +1,18 @@
+{% extends 'website/header.html' %}
+
+{% block title %}{{ news.title }}{% endblock %}
+
+{% block body %}
+
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <img src="{{ news.photo.url }}" class="img-responsive">
+    <h1>{{ news.title }}</h1>
+    <h6>{{ news.date }}</h6>
+    <p>{{ news.body }}</p>
+    {% if error_message %}
+      <p>{{ error_message }}</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

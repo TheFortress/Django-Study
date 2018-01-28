@@ -22,4 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^website/', include('website.urls')),
     url(r'^news/', include('news.urls')),
+    url(r'^account/', include('account.urls')),
+    url(r'^photo/', include('photo.urls')),
+    url(r'^publicphotos/', include('publicphotos.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
