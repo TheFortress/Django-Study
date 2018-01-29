@@ -16,33 +16,41 @@
           </div>
         {% endfor %}
       {% else %}
-        <h2>No News</h2>
+        <h5>No News</h5>
+      {% endif %}
+    </div>
+    <div class="col-xs-4">
+      <h2>Recently Registered</h2>
+      {% if recent_users %}
+        {% for users in recent_users %}
+          <a href="/account/{{ users.username }}">{{ users.username }}&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        {% endfor %}
       {% endif %}
     </div>
     <div class="col-xs-4">
       <h2>Recent Pictures</h2>
       {% if recent_photos %}
         {% for photo in recent_photos %}
-        <div class="col-xs-4">
+        <div class="col-xs-4" style="padding-top: 10px; padding-bottom: 10px">
           <a href="/photo/{{ photo.id }}">
-            <img src="{{ photo.photo.url }}" class="img-responsive">
+            <img src="{{ photo.photo.url }}" class="img-responsive" style="height: 90px; width: auto">
           </a>
         </div>
         {% endfor %}
       {% else %}
-        <h2>No Pictures</h2>
+        <h5>No Pictures</h5>
       {% endif %}
       <h2>Recent Public Photos</h2>
       {% if recent_publicphotos %}
         {% for photo in recent_publicphotos %}
-        <div class="col-xs-4">
+        <div class="col-xs-4" style="padding-top: 10px; padding-bottom: 10px">
           <a href="/publicphotos/{{ photo.id }}">
-            <img src="{{ photo.photo.url }}" class="img-responsive">
+            <img src="{{ photo.photo.url }}" class="img-responsive" style="height: 90px; width: auto">
           </a>
         </div>
         {% endfor %}
       {% else %}
-        <h2>No Pictures</h2>
+        <h5>No Pictures</h5>
       {% endif %}
     </div>
   </div>

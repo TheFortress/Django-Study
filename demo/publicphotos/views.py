@@ -3,7 +3,6 @@ from django.shortcuts import render
 from .models import PublicPhotos
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views import generic
-from .models import PublicPhotos
 from django.views.generic import View
 
 def photo(request):
@@ -24,3 +23,7 @@ class DetailView(generic.DetailView):
 class UploadPhoto(CreateView):
     model = PublicPhotos
     fields = ['title', 'body', 'photo']
+
+    def form_valid(self,form):
+        form.instance.username = self.request.user
+        return super().form_valid(form)

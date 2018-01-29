@@ -9,18 +9,11 @@ class PublicPhotos(models.Model):
     date = models.DateField(default=timezone.now)
     body = models.CharField(max_length=255)
     photo = models.FileField(upload_to='publicphotos/')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    username = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title + ' - ' + self.body
 
     def get_absolute_url(self):
-        return reverse('publicphotos:detail', kwargs={'pk': self.pk})
-
-
-
-def get_queryset(self):
-        queryset = super().get_queryset()
-        return queryset.filter(
-            userusernameiexact=self.kwargs.get("username")
-        )
+        #doesnt work!!!!!
+        return reverse('publicphotos:detailview', kwargs={'pk': self.pk})

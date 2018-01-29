@@ -9,7 +9,7 @@
     <img src="{{ publicphotos.photo.url }}" class="img-responsive">
     <h1>{{ publicphotos.title }}</h1>
     <h6>Uploaded: {{ publicphotos.date }}</h6>
-    <h6>By: {{ publicphotos.username_id }}</h6>
+      <h6>Posted By: <a href="/account/{{publicphotos.username}}">{{ publicphotos.username }}</a></h6>
     <p>{{ publicphotos.body }}</p>
     {% if error_message %}
       <p>{{ error_message }}</p>

@@ -1,7 +1,7 @@
 {% extends 'website/header.html' %}
 {% block body %}
+<h2>Photos</h2>
   <div class="row">
-    <h2>Photos</h2>
     {% if all_photos %}
       {% for photo in all_photos %}
         <div class="col-xs-3">
@@ -17,7 +17,7 @@
         </div>
     {% endfor %}
     {% else %}
-      <h2>No News</h2>
+      <h5>No News</h5>
     {% endif %}
   </div>
 {% endblock %}

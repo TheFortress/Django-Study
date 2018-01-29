@@ -4,6 +4,7 @@ from .forms import UserForm
 from .forms import UserLoginForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from publicphotos.models import PublicPhotos
 
 #this will show a page, asking to either login or register?
 def index(request):
@@ -12,9 +13,14 @@ def index(request):
 def detail(request, username):
     try:
         account = User.objects.get(username=username)
+        all_photos = PublicPhotos.objects.filter(username__username__icontains=username)
     except User.DoesNotExist:
         raise Http404("Nope")
-    return render(request, 'account/detail.html', {'account': account})
+    context = {
+        'account':account,
+        'all_photos':all_photos,
+    }
+    return render(request, 'account/detail.html', context)
 
 
 class UserLoginView(View):
